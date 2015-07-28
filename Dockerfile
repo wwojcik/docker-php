@@ -18,15 +18,18 @@ RUN apk --update add php-pdo \
     php-mcrypt \
     php-pear \
     php-ctype \
+    php-exif \
+    php-pdo_pgsql\
+    php-pdo_mysql\
     git \
+    acl \
     && adduser -D -S -G www-data www-data \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 
 COPY config/php-fpm.conf /etc/php/php-fpm.conf
 
 EXPOSE 9000
 
-VOLUME /var/www
+VOLUME ["/var/www"]
 
 CMD ["php-fpm", "--nodaemonize"]
