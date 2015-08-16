@@ -28,7 +28,7 @@ RUN apk --update add php-pdo \
     php-pdo_mysql \
     git \
     acl \
-    tzdada && \
+    tzdata && \
     adduser -D -S -G www-data www-data  && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer  && \
     rm -rf /var/cache/apk/* \
