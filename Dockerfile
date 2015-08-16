@@ -31,7 +31,7 @@ RUN apk --update add php-pdo \
     tzdata && \
     adduser -D -S -G www-data www-data  && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer  && \
-    rm -rf /var/cache/apk/* \
+    rm -rf /var/cache/apk/* && \
     cp /usr/share/zoneinfo/$TIMEZONE /etc/localtime && \
     echo "$TIMEZONE" >  /etc/timezone
 
