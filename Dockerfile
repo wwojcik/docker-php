@@ -2,10 +2,9 @@ FROM gliderlabs/alpine:latest
 
 MAINTAINER Wojciech Wójcik <wojtaswojcik@gmail.com>
 
-ENV TIMEZONE Europe/Warsaw
-ENV MEMORY_LIMIT 256M
-# If you change MAX_EXECUTION TIME, also change fastcgi_read_timeout accordingly in nginx!
-ENV MAX_EXECUTION_TIME 180
+ENV TIMEZONE=Europe/Warsaw \
+    MEMORY_LIMIT=256M \
+    MAX_EXECUTION_TIME=180
 
 RUN apk --update add php-pdo \
     php-pgsql \
@@ -29,9 +28,12 @@ RUN apk --update add php-pdo \
     php-pdo_mysql \
     git \
     acl \
-    && adduser -D -S -G www-data www-data \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && rm -rf /var/cache/apk/*
+    tzdada && \
+    adduser -D -S -G www-data www-data  && \
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer  && \
+    rm -rf /var/cache/apk/* \
+    cp /usr/share/zoneinfo/$TIMEZONE /etc/localtime && \
+    echo "$TIMEZONE" >  /etc/timezone
 
 COPY config/php-fpm.conf /etc/php/php-fpm.conf
 
