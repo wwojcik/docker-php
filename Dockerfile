@@ -26,6 +26,7 @@ RUN apk --update add php-pdo \
     php-exif \
     php-pdo_pgsql \
     php-pdo_mysql \
+    php-bcmath \
     git \
     acl \
     tzdata && \
