@@ -1,4 +1,4 @@
-FROM gliderlabs/alpine:latest
+FROM alpine:latest
 
 MAINTAINER Wojciech Wójcik <wojtaswojcik@gmail.com>
 
@@ -6,27 +6,27 @@ ENV TIMEZONE=Europe/Warsaw \
     MEMORY_LIMIT=256M \
     MAX_EXECUTION_TIME=180
 
-RUN apk --update add php-pdo \
-    php-pgsql \
-    php-mysql \
-    php-gd \
-    php-curl \
-    php-intl \
-    php-json \
-    php-xsl \
-    php-opcache \
-    php-fpm \
-    php-phar \
-    php-openssl \
-    php-zlib  \
-    php-iconv \
-    php-mcrypt \
-    php-pear \
-    php-ctype \
-    php-exif \
-    php-pdo_pgsql \
-    php-pdo_mysql \
-    php-bcmath \
+RUN apk --update add php5-pdo \
+    php5-pgsql \
+    php5-mysql \
+    php5-gd \
+    php5-curl \
+    php5-intl \
+    php5-json \
+    php5-xsl \
+    php5-opcache \
+    php5-fpm \
+    php5-phar \
+    php5-openssl \
+    php5-zlib  \
+    php5-iconv \
+    php5-mcrypt \
+    php5-pear \
+    php5-ctype \
+    php5-exif \
+    php5-pdo_pgsql \
+    php5-pdo_mysql \
+    php5-bcmath \
     git \
     acl \
     tzdata && \
