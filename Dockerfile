@@ -29,7 +29,9 @@ RUN apk --update add php5-pdo \
     php5-bcmath \
     git \
     acl \
+    curl \
     tzdata && \
+    addgroup -S www-data && \
     adduser -D -S -G www-data www-data  && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer  && \
     rm -rf /var/cache/apk/* && \
