@@ -38,7 +38,7 @@ RUN apk --update add php5-pdo \
     cp /usr/share/zoneinfo/$TIMEZONE /etc/localtime && \
     echo "$TIMEZONE" >  /etc/timezone
 
-COPY config/php-fpm.conf /etc/php/php-fpm.conf
+COPY config/* /etc/php/
 
 RUN sed -i "s@^;date.timezone =.*@date.timezone = $TIMEZONE@" /etc/php/php.ini \
  && sed -i "s@^memory_limit =.*@memory_limit = $MEMORY_LIMIT@" /etc/php/php.ini \
